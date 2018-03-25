@@ -768,6 +768,14 @@ InterpolationResult FeVariable_InterpolateDerivativesAt( void* variable, const d
     */
    if( !Mesh_Algorithms_SearchElements( self->feMesh->algorithms, (double*)globalCoord, &elementCoordIn ) ) {
       /* If coord isn't inside domain elements list, bail out */
+      double *min = self->feMesh->minDomainCrd;
+      double *max = self->feMesh->maxDomainCrd;
+      
+      printf("FeVariable_InterpolateDerivativesAt can't find (%f %f %f) - Mesh min/max coord: (%f, %f, %f) / (%f, %f, %f)\n", 
+        globalCoord[0], globalCoord[1], globalCoord[2],
+        min[0], min[1], min[2], 
+        max[0], max[1], max[2]);
+      
       return OUTSIDE_GLOBAL;
    }
    else /* We found the coord is within a local or shadow element */ {

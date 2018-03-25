@@ -281,6 +281,12 @@ Cell_Index _ElementCellLayout_CellOf_Irregular( void* elementCellLayout, void* _
     }
   }
 
+  double *min = self->mesh->minDomainCrd;
+  double *max = self->mesh->maxDomainCrd;
+  printf("Using brute force search for (%f %f %f) - Mesh min/max coord: (%f, %f, %f) / (%f, %f, %f)\n", 
+                    particle->coord[0], particle->coord[1], particle->coord[2],
+                    min[0], min[1], min[2], 
+                    max[0], max[1], max[2]);
   // brute force search - if not found indicate problem
   if( !Mesh_SearchElements( self->mesh, particle->coord, &elInd ) )
     elInd = elDomainSize;
