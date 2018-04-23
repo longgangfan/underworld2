@@ -103,7 +103,7 @@ class Stokes(_stgermain.StgCompoundComponent):
 
 
     def __init__(self, velocityField, pressureField, fn_viscosity, fn_bodyforce=None, fn_one_on_lambda=None,
-                 fn_lambda=None, fn_source=None, voronoi_swarm=None, conditions=[], gaussPointCount=2
+                 fn_lambda=None, fn_source=None, voronoi_swarm=None, conditions=[], gaussPointCount=2,
                 _removeBCs=True, _fn_viscosity2=None, _fn_director=None, fn_stresshistory=None, _fn_stresshistory=None,
                 _fn_v0=None, _fn_p0=None, _callback_post_solve=None, **kwargs):
 
