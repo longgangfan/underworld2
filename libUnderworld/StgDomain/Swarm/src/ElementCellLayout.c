@@ -301,11 +301,11 @@ Cell_Index _ElementCellLayout_CellOf( void* elementCellLayout, void* _particle )
   int                     dim      = Mesh_GetDimSize(mesh);
   unsigned                elInd    = Mesh_GetDomainSize( mesh, dim );
 
-  /* A filter to see if the particle coords fall inside the mesh geometry */
+  /* A filter to see if the particle coords fall inside the local mesh geometry */
   {
     double minCrd[3], maxCrd[3];
     int d_i;
-    Mesh_GetGlobalCoordRange( mesh, minCrd, maxCrd );
+    Mesh_GetLocalCoordRange( mesh, minCrd, maxCrd );
     for( d_i = 0; d_i < dim; d_i++ ) {
       if( particle->coord[d_i] < minCrd[d_i] || particle->coord[d_i] > maxCrd[d_i] )
       return elInd;
